@@ -1,0 +1,25 @@
+# Python related code
+*.py @Aeternalis-Ingenium
+
+# Java Script related code
+*.tsx @Aeternalis-Ingenium
+*.ts @Aeternalis-Ingenium
+*.cjs @Aeternalis-Ingenium
+
+# HTML & CSS related code
+*.html @Aeternalis-Ingenium
+*.css @Aeternalis-Ingenium
+*.scss @Aeternalis-Ingenium
+
+# JSON related code
+*.json @Aeternalis-Ingenium
+
+# DevOps related code
+*.yml @Aeternalis-Ingenium @NewerKey
+*.yaml @Aeternalis-Ingenium @NewerKey
+*.tf @Aeternalis-Ingenium @NewerKey
+Dockerfile @Aeternalis-Ingenium @NewerKey
+Dockerfile.* @Aeternalis-Ingenium @NewerKey
+
+# Mobile related code
+*.dart @SMatti2
