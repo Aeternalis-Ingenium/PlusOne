@@ -1,5 +1,5 @@
 # Python related code
-*.py @Aeternalis-Ingenium
+*.py @Aeternalis-Ingenium @kayesokua
 
 # Java Script related code
 *.tsx @Aeternalis-Ingenium
@@ -7,9 +7,9 @@
 *.cjs @Aeternalis-Ingenium
 
 # HTML & CSS related code
-*.html @Aeternalis-Ingenium
-*.css @Aeternalis-Ingenium
-*.scss @Aeternalis-Ingenium
+*.html @Aeternalis-Ingenium @kayesokua
+*.css @Aeternalis-Ingenium @kayesokua
+*.scss @Aeternalis-Ingenium @kayesokua
 
 # JSON related code
 *.json @Aeternalis-Ingenium
