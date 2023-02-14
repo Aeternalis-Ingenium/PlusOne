@@ -8,7 +8,6 @@ ROOT_DIR: pathlib.Path = pathlib.Path(__file__).parent.parent.parent.parent.pare
 
 
 class Settings(pydantic.BaseSettings):
-
     TITLE: str = "+1"
     VERSION: str = "0.1.0"
     TIMEZONE: str = "UTC"
@@ -72,7 +71,6 @@ class Settings(pydantic.BaseSettings):
     JWT_ALGORITHM: str = decouple.config("JWT_ALGORITHM", cast=str)  # type: ignore
 
     class Config(pydantic.BaseConfig):
-
         case_sensitive: bool = True
         env_file: str = f"{str(ROOT_DIR)}/.env"
         validate_assignment: bool = True
