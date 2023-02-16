@@ -8,7 +8,6 @@ ROOT_DIR: pathlib.Path = pathlib.Path(__file__).parent.parent.parent.parent.pare
 
 
 class Settings(pydantic.BaseSettings):
-
     TITLE: str = "+1"
     VERSION: str = "0.1.0"
     TIMEZONE: str = "UTC"
@@ -24,9 +23,9 @@ class Settings(pydantic.BaseSettings):
     REDOC_URL: str = "/redoc"
     OPENAPI_PREFIX: str = ""
 
-    DB_POSTGRES_HOST: str = decouple.config("POSTGRES_HOST", cast=str)  # type: ignore
+    DB_POSTGRES_HOST: str = decouple.config("POSTGRES_DEV_HOST", cast=str)  # type: ignore
     DB_MAX_POOL_CON: int = decouple.config("DB_MAX_POOL_CON", cast=int)  # type: ignore
-    DB_POSTGRES_NAME: str = decouple.config("POSTGRES_DB", cast=str)  # type: ignore
+    DB_POSTGRES_NAME: str = decouple.config("POSTGRES_DEV_DB", cast=str)  # type: ignore
     DB_POSTGRES_PASSWORD: str = decouple.config("POSTGRES_PASSWORD", cast=str)  # type: ignore
     DB_POOL_SIZE: int = decouple.config("DB_POOL_SIZE", cast=int)  # type: ignore
     DB_POOL_OVERFLOW: int = decouple.config("DB_POOL_OVERFLOW", cast=int)  # type: ignore
@@ -35,6 +34,7 @@ class Settings(pydantic.BaseSettings):
     DB_TIMEOUT: int = decouple.config("DB_TIMEOUT", cast=int)  # type: ignore
     DB_POSTGRES_USENRAME: str = decouple.config("POSTGRES_USERNAME", cast=str)  # type: ignore
 
+    IS_DB_ASYNC_DRIVER: bool = decouple.config("IS_DB_ASYNC_DRIVER", cast=bool)  # type: ignore
     IS_DB_ECHO_LOG: bool = decouple.config("IS_DB_ECHO_LOG", cast=bool)  # type: ignore
     IS_DB_FORCE_ROLLBACK: bool = decouple.config("IS_DB_FORCE_ROLLBACK", cast=bool)  # type: ignore
     IS_DB_EXPIRE_ON_COMMIT: bool = decouple.config("IS_DB_EXPIRE_ON_COMMIT", cast=bool)  # type: ignore
@@ -72,7 +72,6 @@ class Settings(pydantic.BaseSettings):
     JWT_ALGORITHM: str = decouple.config("JWT_ALGORITHM", cast=str)  # type: ignore
 
     class Config(pydantic.BaseConfig):
-
         case_sensitive: bool = True
         env_file: str = f"{str(ROOT_DIR)}/.env"
         validate_assignment: bool = True
