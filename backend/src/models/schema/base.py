@@ -12,5 +12,5 @@ class BaseSchemaModel(pydantic.BaseModel):
         orm_mode: bool = True
         validate_assignment: bool = True
         allow_population_by_field_name: bool = True
-        json_encoders: dict = {datetime.datetime: datetime_2_isoformat}
-        alias_generator: typing.Any = snake_2_camel
+        json_encoders: typing.Dict[type, typing.Callable] = {datetime.datetime: datetime_2_isoformat}
+        alias_generator: typing.Callable[[str], str] = snake_2_camel
