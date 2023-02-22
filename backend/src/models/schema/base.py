@@ -3,8 +3,8 @@ import typing
 
 import pydantic
 
-from src.utilities.formatters.date_time import datetime_2_isoformat
-from src.utilities.formatters.name_case import snake_2_camel
+from src.utility.formatters.date_time import datetime_2_isoformat
+from src.utility.formatters.name_case import snake_2_camel
 
 
 class BaseSchemaModel(pydantic.BaseModel):

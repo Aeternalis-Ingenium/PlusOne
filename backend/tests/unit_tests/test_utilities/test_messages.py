@@ -1,9 +1,9 @@
 import unittest
 
-from src.utilities.messages.exceptions.http.exc_details import (
+from src.utility.messages.exceptions.http.exc_details import (
     http_400_bad_request_details,
     http_400_email_details,
-    http_400_sigin_credentials_details,
+    http_400_signin_credentials_details,
     http_400_signup_credentials_details,
     http_400_username_details,
     http_401_unauthorized_details,
@@ -19,7 +19,7 @@ class TestHTTPExceptionDetails(unittest.TestCase):
     def setUp(self) -> None:
         self.http_400_bad_request_details = http_400_bad_request_details()
         self.http_400_email_details = http_400_email_details(email="test.email1@exception.com")
-        self.http_400_sigin_credentials_details = http_400_sigin_credentials_details()
+        self.http_400_sigin_credentials_details = http_400_signin_credentials_details()
         self.http_400_signup_credentials_details = http_400_signup_credentials_details()
         self.http_400_username_details = http_400_username_details(username="testusername1")
         self.http_401_unauthorized_details = http_401_unauthorized_details()

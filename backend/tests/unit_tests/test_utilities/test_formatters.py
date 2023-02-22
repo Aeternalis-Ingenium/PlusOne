@@ -1,8 +1,8 @@
 import datetime
 import unittest
 
-from src.utilities.formatters.date_time import datetime_2_isoformat
-from src.utilities.formatters.name_case import any_2_snake, snake_2_camel, snake_2_pascal
+from src.utility.formatters.date_time import datetime_2_isoformat
+from src.utility.formatters.name_case import any_2_snake, snake_2_camel, snake_2_pascal
 
 
 class TestFormatters(unittest.TestCase):

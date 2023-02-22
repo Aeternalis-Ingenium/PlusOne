@@ -39,10 +39,11 @@ class Settings(pydantic.BaseSettings):
     IS_DB_FORCE_ROLLBACK: bool = decouple.config("IS_DB_FORCE_ROLLBACK", cast=bool)  # type: ignore
     IS_DB_EXPIRE_ON_COMMIT: bool = decouple.config("IS_DB_EXPIRE_ON_COMMIT", cast=bool)  # type: ignore
 
-    API_TOKEN: str = decouple.config("API_TOKEN", cast=str)  # type: ignore
-    AUTH_TOKEN: str = decouple.config("AUTH_TOKEN", cast=str)  # type: ignore
+    API_HEADER_KEY_TITLE: pydantic.SecretStr = pydantic.SecretStr(decouple.config("API_HEADER_KEY_TITLE", cast=str))  # type: ignore
+    API_COOKIE_KEY_TITLE: pydantic.SecretStr = pydantic.SecretStr(decouple.config("API_COOKIE_KEY_TITLE", cast=str))  # type: ignore
+    API_QUERY_KEY_TITLE: pydantic.SecretStr = pydantic.SecretStr(decouple.config("API_QUERY_KEY_TITLE", cast=str))  # type: ignore
     JWT_TOKEN_PREFIX: str = decouple.config("JWT_TOKEN_PREFIX", cast=str)  # type: ignore
-    JWT_SECRET_KEY: str = decouple.config("JWT_SECRET_KEY", cast=str)  # type: ignore
+    JWT_SECRET_KEY: pydantic.SecretStr = pydantic.SecretStr(decouple.config("JWT_SECRET_KEY", cast=str))  # type: ignore
     JWT_SUBJECT: str = decouple.config("JWT_SUBJECT", cast=str)  # type: ignore
     JWT_MIN: int = decouple.config("JWT_MIN", cast=int)  # type: ignore
     JWT_HOUR: int = decouple.config("JWT_HOUR", cast=int)  # type: ignore
