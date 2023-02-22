@@ -7,15 +7,14 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import AsyncEngine
 from sqlalchemy.pool import NullPool as SQLAlchemyNullPool
 
-from src.repository.base import BaseTable
+from src.repository.base import DBBaseTable
 from src.repository.database import db
 
 config = context.config
-config.set_main_option(name="sqlalchemy.url", value=str(db.async_engine))
-target_metadata = BaseTable.metadata
-
+config.set_main_option(name="sqlalchemy.url", value=str(db.set_async_driver))
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
+target_metadata = DBBaseTable.metadata
 
 
 def run_migrations_offline() -> None:

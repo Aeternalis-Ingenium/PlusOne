@@ -32,7 +32,7 @@ class Database:
         )
 
     @property
-    def set_async_driver(self):
+    def set_async_driver(self) -> pydantic.PostgresDsn | str:
         return (
             self.postgres_uri.replace("postgresql://", "postgresql+asyncpg://") if self.is_async else self.postgres_uri
         )

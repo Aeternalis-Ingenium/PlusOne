@@ -5,7 +5,7 @@ request has not been completed because it lacks valid authentication credentials
 
 import fastapi
 
-from src.utilities.messages.exceptions.http.exc_details import http_401_unauthorized_details
+from src.utility.messages.exceptions.http.exc_details import http_401_unauthorized_details
 
 
 async def http_exc_401_unauthorized_request() -> Exception:
