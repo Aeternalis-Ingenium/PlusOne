@@ -33,12 +33,20 @@ class Database:
 
     @property
     def set_async_driver(self):
+        """
+        Returns the PostgresDsn with the async driver if `is_async` is True, else returns the original `postgres_uri`.
+        """
         return (
             self.postgres_uri.replace("postgresql://", "postgresql+asyncpg://") if self.is_async else self.postgres_uri
         )
 
     @property
     def async_engine(self) -> SQLAlchemyAsyncEngine:
+        """
+        Returns the SQLAlchemyAsyncEngine instance for this database connection.
+        If the async engine has not yet been initialized, it will be initialized using the `initialize_async_engine` method.
+        """
+        
         if self._async_engine:
             return self._async_engine
         else:
@@ -47,6 +55,9 @@ class Database:
 
     @property
     def initialize_async_engine(self) -> None:
+        """
+        Initializes the asynchronous engine and sets it to `_async_engine`.
+        """
         self._async_engine = create_sqlalchemy_async_engine(
             url=self.set_async_driver,
             echo=settings.IS_DB_ECHO_LOG,
@@ -57,6 +68,9 @@ class Database:
 
     @property
     def async_session(self) -> sqlalchemy_async_sessionmaker[SQLAlchemyAsyncSession]:
+        """
+        Returns the `_async_engine` if it exists, otherwise initializes it and returns it.
+        """
         if self._async_session:
             return self._async_session
         else:
@@ -65,6 +79,9 @@ class Database:
 
     @property
     def initialize_async_session(self) -> None:
+        """
+        Initializes the asynchronous session and sets it to `_async_session`.
+        """
         self._async_session = sqlalchemy_async_sessionmaker(bind=self.async_engine, expire_on_commit=False)
 
     def __call__(self):
@@ -84,9 +101,11 @@ class Database:
     def __str__(self) -> str:
         return f"Database Server: {self.server}\nDatabase Framework: {self.framework}"
 
-
 def get_database() -> Database:
-    return Database()
-
+    try:
+        return Database()
+    except Exception as e:
+        loguru.logger.exception(f"Error initializing database: {str(e)}")
+        raise
 
 db = get_database()
