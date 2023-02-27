@@ -1,0 +1,11 @@
+name: 'Continuous Integration'
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'feature/**'
+      - 'fix/**'
+  pull_request:
+    branches:
+      - 'feature/**'
+      - 'fix/**'
