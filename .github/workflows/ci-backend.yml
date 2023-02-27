@@ -12,6 +12,7 @@ on:
 jobs:
   build:
     name: 'Build 🏗'
+    environment: development
     strategy:
       matrix:
         os:
@@ -38,6 +39,7 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
   code-quality:
     name: 'Code-Quality 💎'
+    environment: development
     needs: build
     strategy:
       matrix:
@@ -81,6 +83,7 @@ jobs:
 
   test:
     name: 'Test 🔬'
+    environment: development
     needs: build
     strategy:
       matrix:
